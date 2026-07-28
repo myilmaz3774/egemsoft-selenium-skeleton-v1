@@ -65,3 +65,19 @@ Vakti kalanlar için aşağıdaki API uç noktasına istek atarak dönen JSON ya
 ```bash
 mvn test
 ```
+
+### Giriş testi için ortam değişkenleri
+
+`TestCase4LogoutTest`, kullanıcı bilgilerini kaynak koda yazmaz. Testi çalıştırmadan önce geçerli bir Automation Exercise hesabının bilgileri ortam değişkeni olarak tanımlanmalıdır:
+
+```powershell
+$env:AUTOMATION_EXERCISE_EMAIL = "ornek@mail.com"
+$env:AUTOMATION_EXERCISE_PASSWORD = "parola"
+mvn -Dtest=TestCase4LogoutTest test
+```
+
+Bu değişkenler tanımlı değilse giriş testi başarısız olmak yerine atlanır. Bonus API testi bağımsız çalıştırılabilir:
+
+```powershell
+mvn -Dtest=ApiBonusTask test
+```
